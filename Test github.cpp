@@ -33,7 +33,7 @@ int main() {
     std::cout << "\n--- إحصائيات الحدث بعد الإلغاء ---\n";
     event.displayEventStatistics();
 
-    // 7. حفظ بيانات الحدث في ملف
+    
     event.saveEventData();
 
     return 0;
