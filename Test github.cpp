@@ -1,20 +1,40 @@
-// Test github.cpp : This file contains the 'main' function. Program execution begins and ends there.
-//
+﻿#include <iostream>
+#include "Event.h"
+#include "seat.h"
+using namespace std;
+int main() {
+    // 1. إنشاء حدث جديد
+    Event event(1, "Music Concert", "2023-12-15", 5, 100.0);  // يحتوي الحدث على 5 مقاعد بسعر 100 لكل مقعد
+    event.addEvent("Music Concert", "2023-12-15");
+    // 2. حجز بعض المقاعد
+    std::cout << "\n--- حجز المقاعد ---\n";
+    Seat seat(1, 100, "contact2@example.com");
+    //event.reserveSeat(1, "contact1@example.com");  // حجز المقعد 1
+    //event.reserveSeat(2, "contact2@example.com");  // حجز المقعد 2
 
-#include <iostream>
+    // 3. عرض إحصائيات الحدث
+    std::cout << "\n--- إحصائيات الحدث قبل الإلغاء ---\n";
+    event.displayEventStatistics();
 
-int main()
-{
-    std::cout << "Hello World!\n";
+    // 4. التحقق مما إذا كان الحدث ممتلئًا
+    std::cout << "\n--- التحقق مما إذا كان الحدث ممتلئ ---\n";
+    if (event.isEventFull()) {
+        std::cout << "الحدث ممتلئ.\n";
+    }
+    else {
+        std::cout << "لا يزال هناك مقاعد متاحة.\n";
+    }
+
+    // 5. إلغاء الحدث وإرسال إشعارات للحاضرين
+    std::cout << "\n--- إلغاء الحدث ---\n";
+    event.cancelEvent();
+
+    // 6. عرض إحصائيات الحدث بعد الإلغاء
+    std::cout << "\n--- إحصائيات الحدث بعد الإلغاء ---\n";
+    event.displayEventStatistics();
+
+    // 7. حفظ بيانات الحدث في ملف
+    event.saveEventData();
+
+    return 0;
 }
-
-// Run program: Ctrl + F5 or Debug > Start Without Debugging menu
-// Debug program: F5 or Debug > Start Debugging menu
-
-// Tips for Getting Started: 
-//   1. Use the Solution Explorer window to add/manage files
-//   2. Use the Team Explorer window to connect to source control
-//   3. Use the Output window to see build output and other messages
-//   4. Use the Error List window to view errors
-//   5. Go to Project > Add New Item to create new code files, or Project > Add Existing Item to add existing code files to the project
-//   6. In the future, to open this project again, go to File > Open > Project and select the .sln file
