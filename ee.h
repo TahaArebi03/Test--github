@@ -34,7 +34,7 @@ public:
     double getPrice() const { return price; }
 
     // inter
-
+    int number();
 };
 
 
