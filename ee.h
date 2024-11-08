@@ -32,6 +32,9 @@ public:
 
     // Get seat price
     double getPrice() const { return price; }
+
+    // inter
+
 };
 
 
